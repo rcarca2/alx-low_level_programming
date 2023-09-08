@@ -13,10 +13,10 @@ int main(void)
 	srand(time(0));
 	n = rand() - RAND_MAX / 2;
 if (n > 5)
-printf(n ,"and is greater than 5\n");
+printf("%dand is greater than 5\n" ,n);
 if (n == 0)
-printf(n ,"and is 0\n");
+printf("%dand is 0\n" ,n);
 if (n > 0 && n < 6)
-printf(n ,"and is less than 6 and not 0\n");
+printf("%dand is less than 6 and not 0\n" ,n);
 	return (0);
 }
