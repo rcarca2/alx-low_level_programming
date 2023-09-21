@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * _strcat - concatenates 2 strings.
  * @dest: string with concatenation
@@ -8,19 +7,20 @@
  */
 char *_strcat(char *dest, char *src)
 {
-int a, b;
-a = 0;
-b = 0;
+	int lengthD, lengthS;
 
-while (*(dest + a) != '\0')
-	a++;
-	while (*(src + b) != '\0' && a < 97)
+	lengthD = 0;
+	lengthS = 0;
+
+	while (*(dest + lengthD) != '\0')
+		lengthD++;
+
+	while (*(src + lengthS) != '\0' && lengthD < 97)
 	{
-		*(dest + a) = *(src + b);
-		a++;
-		b++;
+		*(dest + lengthD) = *(src + lengthS);
+		lengthD++;
+		lengthS++;
 	}
-	*(dest + a) = '\0';
+	*(dest + lengthD) = '\0';
 	return (dest);
-return (dest);
 }
