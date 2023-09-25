@@ -1,0 +1,11 @@
+--2023-09-25 16:35:34--  https://www.google.com/url?sa=t
+Resolving www.google.com (www.google.com)... 172.253.122.106, 172.253.122.103, 172.253.122.147, ...
+Connecting to www.google.com (www.google.com)|172.253.122.106|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘url?sa=t’
+
+url?sa=t               0  --.-KB/s          url?sa=t           1.36K  --.-KB/s    in 0s      
+
+2023-09-25 16:35:34 (31.4 MB/s) - ‘url?sa=t’ saved [1389]
+
