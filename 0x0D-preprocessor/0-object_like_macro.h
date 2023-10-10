@@ -6,5 +6,4 @@
  * Desc: haeder file
  */
 #define SIZE 1024
-
 #endif
