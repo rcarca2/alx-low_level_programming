@@ -6,4 +6,4 @@
  * Desc: haeder file
  */
 #define SIZE 1024
-#endif
+#endif /* Object-like Macro */
