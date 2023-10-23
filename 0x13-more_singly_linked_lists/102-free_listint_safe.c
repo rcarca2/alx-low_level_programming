@@ -1,52 +1,72 @@
 #include "lists.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 /**
- * free_listint_safe - function that frees a listint_t list.
- * @h: pointer to pointer to the head of linked list.
+ * free_listp2 - frees a linked list
+ * @head: head of a list.
  *
- * This function can free lists with a loop.
- * You should go through the list only once.
- * The function sets the head to NULL.
- *
- * Return: the size of the list that was free’d. Otherwise 0.
+ * Return: no return.
  */
+void free_listp2(listp_t **head)
+{
+	listp_t *temp;
+	listp_t *curr;
 
+	if (head != NULL)
+	{
+		curr = *head;
+		while ((temp = curr) != NULL)
+		{
+			curr = curr->next;
+			free(temp);
+		}
+		*head = NULL;
+	}
+}
+
+/**
+ * free_listint_safe - frees a linked list.
+ * @h: head of a list.
+ *
+ * Return: size of the list that was freed.
+ */
 size_t free_listint_safe(listint_t **h)
 {
-	listint_t *current;
-	listnode_t *nodes = NULL; /* stores address of nodes */
-	size_t count = 0;
+	size_t nnodes = 0;
+	listp_t *hptr, *new, *add;
+	listint_t *curr;
 
-	if (h == NULL)
-		return (0);
-
-	/* while you have not encountered a loop */
-	while (!is_in_nodes(nodes, *h))
+	hptr = NULL;
+	while (*h != NULL)
 	{
-		/* check if the malloc fails then exit */
-		if (!add_nodeptr(&nodes, *h))
-		{
-			free_listnode(nodes);
-			exit(98);
-		}
-		current = *h;
-		*h = (*h)->next;
-		free(current);
-		/* print address of current node and the value of field n */
-		/* cast it a void pointer in order to print the address */
-		/* printf("[%p] %d\n", (void *)head, head->n); */
-		/* count the nodes */
-		count++;
-	}
-	/* if you encounter a loop */
-	if (*h != NULL)
-		*h = NULL;
+		new = malloc(sizeof(listp_t));
 
-	/* print where the loop starts */
-	/*	printf("-> [%p] %d\n", (void *)head, head->n); */
-	free_listnode(nodes);
-	/* return number of nodes */
-	return (count);
+		if (new == NULL)
+			exit(98);
+
+		new->p = (void *)*h;
+		new->next = hptr;
+		hptr = new;
+
+		add = hptr;
+
+		while (add->next != NULL)
+		{
+			add = add->next;
+			if (*h == add->p)
+			{
+				*h = NULL;
+				free_listp2(&hptr);
+				return (nnodes);
+			}
+		}
+
+		curr = *h;
+		*h = (*h)->next;
+		free(curr);
+		nnodes++;
+	}
+
+	*h = NULL;
+	free_listp2(&hptr);
+	return (nnodes);
 }
