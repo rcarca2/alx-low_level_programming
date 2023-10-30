@@ -14,7 +14,7 @@
  */
 int _strncmp(const char *s1, const char *s2, size_t n)
 {
-	for (n,s2,s1 ; n && *s1 && *s2; --n, ++s1, ++s2)
+	for ( ; n && *s1 && *s2; --n, ++s1, ++s2)
 	{
 		if (*s1 != *s2)
 			return (*s1 - *s2);
@@ -73,6 +73,7 @@ void elf_magic(const unsigned char *buffer)
 	printf("ELF Header:\n  Magic:   ");
 
 	for (i = 0; i < 16; ++i)
+		printf("%02x%c", buffer[i], i < 15 ? ' ' : '\n');
 }
 
 /**
