@@ -1,5 +1,5 @@
-#ifndef MACRO
-#define MACRO
+#ifndef MACRO_H
+#define MACRO_H
 /**
  * File: O-object_like_macro
  *
